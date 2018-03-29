@@ -1,0 +1,71 @@
+1/16/16 5:53 PM INFO  :  -------------------------------------------------
+1/16/16 5:53 PM INFO  :  Starting Zbra Automation ...
+1/16/16 5:53 PM INFO  :  Loading Internal Data Structure ....
+1/16/16 5:53 PM INFO  :  Starting ZBRA in standalone mode ...
+1/16/16 5:53 PM INFO  :  Reading file: Resources/Framework/Zbra.properties
+1/16/16 5:53 PM INFO  :  Total data loaded: 26
+1/16/16 5:53 PM INFO  :  No Video Recording required.
+1/16/16 5:53 PM INFO  :  Loading data for: productmanagement
+1/16/16 5:53 PM INFO  :  Reading file: Resources/testmodules/productmanagement/app.properties
+1/16/16 5:53 PM INFO  :  Total data loaded: 4
+1/16/16 5:53 PM INFO  :  Reading file: Resources/testmodules/productmanagement/object.properties
+1/16/16 5:53 PM INFO  :  Total data loaded: 0
+1/16/16 5:53 PM INFO  :  Starting test --> napower : productmanagement
+1/16/16 5:53 PM INFO  :  productmanagement test type: Smoke
+1/16/16 5:53 PM INFO  :  <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="productmanagement">
+  <listeners>
+    <listener class-name="com.znalytics.framework.Listener.MethodInterceptorListener"/>
+    <listener class-name="com.znalytics.framework.Listener.TestNGListener"/>
+  </listeners>
+  <test name="Znalytics Execution Report - productmanagement smoke Smoke test scripts">
+    <parameter name="password" value="Znalytics123"/>
+    <parameter name="appUrl" value="http://qa.znergysuite.com"/>
+    <parameter name="username" value="domainadmin@znalytics.com"/>
+    <classes>
+      <class name="com.znalytics.common.tests.Login"/>
+      <class name="com.znalytics.common.tests.Logout"/>
+      <class name="com.znalytics.productmanagement.tests.SmokeTestScripts"/>
+    </classes>
+  </test> <!-- Znalytics Execution Report - productmanagement smoke Smoke test scripts -->
+</suite> <!-- productmanagement -->
+
+1/16/16 5:53 PM INFO  :  Ignoring integration to Cuanto ...
+1/16/16 5:53 PM INFO  :  Starting browser - chrome
+1/16/16 5:53 PM INFO  :  Initializing Google Chrome Driver
+1/16/16 5:53 PM INFO  :  Setting default selenium timout: 30
+1/16/16 5:53 PM INFO  :  Register Webdriver EventListner.
+1/16/16 5:53 PM INFO  :  Selenium server setup done successfully ...
+1/16/16 5:53 PM INFO  :  
+1/16/16 5:53 PM INFO  :  STARTING TESTS --> : testLogin([http://qa.znergysuite.com, domainadmin@znalytics.com, Znalytics123])
+1/16/16 5:53 PM INFO  :  Open Url: http://qa.znergysuite.com
+1/16/16 5:54 PM INFO  :  Screenshot folder path created successfully.
+1/16/16 5:54 PM INFO  :  TEST PASSED --> : testLogin([http://qa.znergysuite.com, domainadmin@znalytics.com, Znalytics123])
+1/16/16 5:54 PM INFO  :  ===============================================
+1/16/16 5:54 PM INFO  :  STARTING TESTS --> : testLogout
+************************************************** 
+1/16/16 5:54 PM SEVERE  :  com.znalytics.framework.utility.Element.isClickable >> Check failed for element to clickable : Proxy element for: org.openqa.selenium.support.pagefactory.DefaultElementLocator@1c1bbc4e
+************************************************** 
+1/16/16 5:54 PM INFO  :  Screenshot folder path created successfully.
+************************************************** 
+1/16/16 5:54 PM SEVERE  :  com.znalytics.framework.Listener.TestNGListener.onTestFailure >> TEST FAILED --> : testLogout
+************************************************** 
+1/16/16 5:54 PM INFO  :  ===============================================
+1/16/16 5:54 PM INFO  :  STARTING TESTS --> : testAddProduct
+1/16/16 5:55 PM WARNING  :  Element was stale immediately after waiting to be clickable. Waiting for element to be clickable again.
+1/16/16 5:55 PM INFO  :  Selecting Dropdown option (index) : 1
+1/16/16 5:56 PM INFO  :  Selecting Dropdown option (index) : 1
+1/16/16 5:56 PM INFO  :  Selecting Dropdown option (index) : 1
+1/16/16 5:56 PM INFO  :  Selecting Dropdown option (index) : 1
+************************************************** 
+1/16/16 5:56 PM SEVERE  :  com.znalytics.framework.Listener.TestNGListener.onTestFailure >> TEST FAILED --> : testAddProduct
+************************************************** 
+1/16/16 5:56 PM INFO  :  ===============================================
+1/16/16 5:56 PM INFO  :  STARTING TESTS --> : testNavigateToSearchPage
+************************************************** 
+1/16/16 5:57 PM SEVERE  :  com.znalytics.framework.utility.Element.isVisible >> Unable to check the visibility of element : Proxy element for: org.openqa.selenium.support.pagefactory.DefaultElementLocator@10d307f1
+************************************************** 
+************************************************** 
+1/16/16 5:57 PM SEVERE  :  com.znalytics.framework.utility.Element.isVisible >> Unable to check the visibility of element : Proxy element for: org.openqa.selenium.support.pagefactory.DefaultElementLocator@5acf93bb
+************************************************** 

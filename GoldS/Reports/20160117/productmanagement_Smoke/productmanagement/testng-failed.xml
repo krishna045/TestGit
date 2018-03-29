@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [productmanagement]">
+  <parameter name="password" value="Znalytics123"/>
+  <parameter name="appUrl" value="http://qa.znergysuite.com"/>
+  <parameter name="username" value="domainadmin@znalytics.com"/>
+  <listeners>
+    <listener class-name="com.znalytics.framework.Listener.MethodInterceptorListener"/>
+    <listener class-name="com.znalytics.framework.Listener.TestNGListener"/>
+  </listeners>
+  <test name="Znalytics Execution Report - productmanagement smoke Smoke test scripts(failed)">
+    <parameter name="password" value="Znalytics123"/>
+    <parameter name="appUrl" value="http://qa.znergysuite.com"/>
+    <parameter name="username" value="domainadmin@znalytics.com"/>
+    <classes>
+      <class name="com.znalytics.productmanagement.tests.SmokeTestScripts">
+        <methods>
+          <include name="testNavigateToEditRateSchedule"/>
+          <include name="testNavigateToEditRateScheduleItems"/>
+          <include name="testAddProduct"/>
+          <include name="testNavigateToViewProductPage"/>
+        </methods>
+      </class> <!-- com.znalytics.productmanagement.tests.SmokeTestScripts -->
+      <class name="com.znalytics.common.tests.Logout">
+        <methods>
+          <include name="testLogout"/>
+        </methods>
+      </class> <!-- com.znalytics.common.tests.Logout -->
+    </classes>
+  </test> <!-- Znalytics Execution Report - productmanagement smoke Smoke test scripts(failed) -->
+</suite> <!-- Failed suite [productmanagement] -->

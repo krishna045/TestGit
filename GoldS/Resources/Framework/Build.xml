@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- 
+	Copyright Znalytics 2015 
+	
+	Description: 
+	This is ant build.xml file for generating AutoNAP JAR. 
+	
+	Author: Nikesh Jauhari (njauhari@znalytics.com) 
+	Release: 03/12/2015
+	 
+-->
+
+<project name="Zbra" basedir="." default="Release">
+
+	<tstamp>
+		<format property='build.time' pattern='yyyy-MM-dd HH:mm:ss' />
+	</tstamp>
+	<property name='app.name' value='Zbra' />
+	<property name="source.dir" value="../../src" />
+	<property name="lib.dir" value="../../lib" />
+	<property name="class.dir" value="../../Build" />
+	<property name="main-class" value="com.znalytics.framework.core.Start" />
+	<property name="doc.dir" value="../../ZbraDocs" />
+	<property name="release.dir" value="../../Release" />
+	<property name="resource.dir" value="../../Resources" />
+
+	<!-- Print some info -->
+	<echo>
+		Application: ${app.name}
+		Build File : ${ant.file}
+		Run Date   : ${build.time}
+		Run by     : ${user.name}
+		Build Dir  : ${class.dir}
+		Base Dir   : ${basedir}
+		Java Home  : ${java.home}
+	</echo>
+
+	<!-- Set AutoNAP ClassPath -->
+	<path id="project.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Remove the old files -->
+	<target name="clean">
+		<delete dir="${class.dir}" />
+		<delete dir="${release.dir}" />
+	</target>
+
+	<!-- Create the dir -->
+	<target name="init">
+		<mkdir dir="${class.dir}" />
+		<mkdir dir="${release.dir}" />
+	</target>
+
+	<!-- Compile AutoNAP code -->
+	<target name="compile" description="Build class files" depends="clean,init">
+		<copy includeemptydirs="false" todir="${class.dir}">
+			<fileset dir="${source.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<javac srcdir="${source.dir}" destdir="${class.dir}" includeantruntime="false">
+			<classpath refid="project.classpath" />
+		</javac>
+		<echo>Classpath: ${toString:project.classpath}</echo>
+	</target>
+
+	<!-- Create AutoNAP jar -->
+	<target name="jar" depends="compile">
+		<jar destfile="${release.dir}/${ant.project.name}.jar" basedir="${class.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+				<attribute name="built-by" value="${user.name}" />
+			</manifest>
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-net-3.1.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/cuanto-adapter-2.8.0.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/cuanto-api-2.8.0.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/javax.mail.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/joda-time-2.7.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json-simple-1.1.1.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/MonteScreenRecorder.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/pdfbox-1.8.8.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/poi-3.11-20141221.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/poi-excelant-3.11-20141221.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/poi-ooxml-3.11-20141221.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/poi-ooxml-schemas-3.11-20141221.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/selenium-server-standalone-2.45.0.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/sqljdbc4.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/testng-6.8.15.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/xmlbeans-2.6.0.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/zip4j_1.3.2.jar" />
+		</jar>
+	</target>
+
+	<!-- Create Zbra Release -->
+	<target name="Release" depends="jar" description="Copy Zbra Resources">
+		<copy todir="${release.dir}/Resources">
+			<fileset dir="${resource.dir}" />
+		</copy>
+		<zip destfile="../../Release.zip" basedir="${release.dir}" />
+	</target>
+
+
+
+	<!-- Create Zbra javadocs -->
+	<target name="Javadocs" depends="compile" description="Generate documentation for Zbra">
+		<echo>Generating Javadocs.</echo>
+		<javadoc sourcepath="${source.dir}" destdir="${doc.dir}" />
+		<echo>completed.</echo>
+	</target>
+
+</project>
